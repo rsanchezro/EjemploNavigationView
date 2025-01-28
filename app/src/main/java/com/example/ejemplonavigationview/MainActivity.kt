@@ -19,7 +19,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var mibinding:ActivityMainBinding
     lateinit var mi_toolbar:Toolbar
     lateinit var mi_drawer:DrawerLayout
-    var alto_systembar:Int=0
     lateinit var toggle:ActionBarDrawerToggle
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,16 +33,13 @@ class MainActivity : AppCompatActivity() {
 
             val layoutParams = mibinding.navigationView.layoutParams as DrawerLayout.LayoutParams
 
-
             // Establecer el margen superior para que no cubra el Toolbar
             layoutParams.topMargin = mibinding.myToolbar.layoutParams.height+systemBars.top
             // Opcional: establecer márgenes inferiores también (por ejemplo, para navegación gestual)
 
 
-
             // Aplicar los LayoutParams al NavigationView
             mibinding.navigationView.layoutParams = layoutParams
-
 
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
@@ -51,10 +47,10 @@ class MainActivity : AppCompatActivity() {
         //DrawerLayout
         mi_drawer=findViewById(R.id.mi_drawerlayout)
 
-        //Toolbar
-       // mi_toolbar=findViewById<Toolbar>(R.id.toolbar2)
+        //Establecemos el Toolbar
         setSupportActionBar(mibinding.myToolbar)
-        //Ponemos icono al menu
+
+        //Ponemos icono al menu si queremos cambiarlo
        // supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_action_restaurant_menu)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
