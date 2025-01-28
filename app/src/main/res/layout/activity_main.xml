@@ -40,7 +40,7 @@
         android:id="@+id/fragmentContainerView"
         android:name="androidx.fragment.app.DialogFragment"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:background="@android:color/holo_orange_dark"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
@@ -52,7 +52,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:background="@android:color/holo_orange_dark"
-android:fitsSystemWindows="true"
+        android:fitsSystemWindows="true"
+
+
         app:headerLayout="@layout/layout_cabecera"
         app:menu="@menu/menuhamburguesa" />
 
