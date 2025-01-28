@@ -5,25 +5,56 @@
     android:id="@+id/mi_drawerlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:openDrawer="start"
-
     android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
-    <include
-        layout="@layout/contenido"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:fitsSystemWindows="true">
+
+            <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/my_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+
+                android:elevation="4dp">
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:name="androidx.fragment.app.DialogFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@android:color/holo_orange_dark"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_view"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:background="@android:color/holo_orange_dark"
+android:fitsSystemWindows="true"
         app:headerLayout="@layout/layout_cabecera"
-        app:menu="@menu/menuhamburguesa"
-        android:layout_gravity="start"/>
+        app:menu="@menu/menuhamburguesa" />
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
