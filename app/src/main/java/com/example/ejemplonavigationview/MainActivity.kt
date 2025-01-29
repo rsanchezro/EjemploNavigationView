@@ -50,9 +50,11 @@ class MainActivity : AppCompatActivity() {
         //Establecemos el Toolbar
         setSupportActionBar(mibinding.myToolbar)
 
-        //Ponemos icono al menu si queremos cambiarlo
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_action_restaurant_menu)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        //Ponemos icono al menu si queremos cambiarlo, solo valido si no definimos
+        //el toggle, en este caso nos tocará gestionar en el método
+        //onOptionItemSelected la apertura del menu
+      //  supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_action_restaurant_menu)
+        // supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         mibinding.apply {
 
@@ -63,6 +65,7 @@ class MainActivity : AppCompatActivity() {
             //Manejar la animación de transición entre el ícono de menú y la flecha automáticamente.
 
             toggle=ActionBarDrawerToggle(this@MainActivity,miDrawerlayout,this.myToolbar,R.string.abierto,R.string.cerrado)
+
 
          //   Esto vincula el toggle (el controlador de animación y eventos del Drawer) con el DrawerLayout.
            // De esta manera, el ActionBarDrawerToggle detecta cuando el Drawer se abre o se cierra y actualiza automáticamente el ícono en la barra de herramientas.
