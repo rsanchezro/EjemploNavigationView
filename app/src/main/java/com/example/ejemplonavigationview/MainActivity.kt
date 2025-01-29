@@ -3,6 +3,7 @@ package com.example.ejemplonavigationview
 import android.app.ActionBar
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -23,18 +24,18 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mibinding=ActivityMainBinding.inflate(layoutInflater)
-      enableEdgeToEdge()
+     enableEdgeToEdge()
         setContentView(mibinding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.mi_drawerlayout)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
 
-            //Ahora actualizo el margen del NavigationView
+           //Ahora actualizo el margen del NavigationView
             // Configurar LayoutParams personalizados
 
             val layoutParams = mibinding.navigationView.layoutParams as DrawerLayout.LayoutParams
 
-            // Establecer el margen superior para que no cubra el Toolbar
-            layoutParams.topMargin = mibinding.myToolbar.layoutParams.height+systemBars.top
+            // Establecer el margen superior para que cubra solo el Toolbar
+            layoutParams.topMargin = systemBars.top
             // Opcional: establecer márgenes inferiores también (por ejemplo, para navegación gestual)
 
 
@@ -48,11 +49,13 @@ class MainActivity : AppCompatActivity() {
         mi_drawer=findViewById(R.id.mi_drawerlayout)
 
         //Establecemos el Toolbar
-        setSupportActionBar(mibinding.myToolbar)
+        setSupportActionBar(mibinding.contenido.myToolbar)
 
         //Ponemos icono al menu si queremos cambiarlo
        // supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_action_restaurant_menu)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+
 
         mibinding.apply {
 
@@ -74,7 +77,9 @@ class MainActivity : AppCompatActivity() {
             //Si está cerrado, mostrará el ícono de menú (hamburguesa).
             toggle.syncState()
 
-
+            navigationView.getHeaderView(0).findViewById<ImageView>(R.id.imageCruz).setOnClickListener{
+                miDrawerlayout.closeDrawers()
+            }
 
             //Añade escuchador a las opciones de menu
             navigationView.setNavigationItemSelectedListener {
