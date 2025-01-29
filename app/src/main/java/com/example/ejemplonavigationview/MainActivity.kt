@@ -23,9 +23,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mibinding=ActivityMainBinding.inflate(layoutInflater)
-      enableEdgeToEdge()
+    //  enableEdgeToEdge()
         setContentView(mibinding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.mi_drawerlayout)) { v, insets ->
+      /*  ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.mi_drawerlayout)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
 
             //Ahora actualizo el margen del NavigationView
@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
-        }
+        }*/
         //DrawerLayout
         mi_drawer=findViewById(R.id.mi_drawerlayout)
 
@@ -80,11 +80,11 @@ class MainActivity : AppCompatActivity() {
             navigationView.setNavigationItemSelectedListener {
                 when(it.itemId)
                 {   //Cada vez creo una instancia nueva de fragmentos
-                    R.id.faltas-> openFragment(Faltas_Fragment())
-                    R.id.positivos-> openFragment(Positivos_Fragment())
-                    R.id.trabajos-> openFragment(Trabajos_Fragment())
+                    R.id.faltas-> Toast.makeText(this@MainActivity,"RESTO",Toast.LENGTH_LONG).show()
+                    R.id.positivos-> Toast.makeText(this@MainActivity,"BD",Toast.LENGTH_LONG).show()
+                    R.id.trabajos-> Toast.makeText(this@MainActivity,"BD",Toast.LENGTH_LONG).show()
                     R.id.BD->Toast.makeText(this@MainActivity,"BD",Toast.LENGTH_LONG).show()
-                    else -> Toast.makeText(this@MainActivity,"RESTO",Toast.LENGTH_LONG).show()
+                    else -> Toast.makeText(this@MainActivity,"BD",Toast.LENGTH_LONG).show()
                 }
                 //Si queremos que quede marcada la opción
               //  it.setChecked(true)
@@ -108,8 +108,8 @@ Si el usuario selecciona cualquier otro ítem del menú:
 El método delega el evento al sistema (super.onOptionsItemSelected(item)),
 que se encargará de manejarlo (por ejemplo, ejecutando acciones específicas para otros ítems).
  */
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-/*     Se puede implementar de otra forma
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {/*     Se puede implementar de otra forma
+
   if(item.itemId==android.R.id.home){
             mibinding.miDrawerlayout.openDrawer(GravityCompat.START);
         }
@@ -123,9 +123,5 @@ que se encargará de manejarlo (por ejemplo, ejecutando acciones específicas pa
     }
 
 /*Funcion para cargar un fragmento, cuidado que no lo añado en la pila */
-    private fun openFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainerView, fragment)
-            .commit()
-    }
+
 }
