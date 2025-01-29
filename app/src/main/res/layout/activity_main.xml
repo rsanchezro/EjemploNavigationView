@@ -52,6 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+
         android:background="@android:color/holo_orange_dark"
         app:headerLayout="@layout/layout_cabecera"
         app:menu="@menu/menuhamburguesa" />

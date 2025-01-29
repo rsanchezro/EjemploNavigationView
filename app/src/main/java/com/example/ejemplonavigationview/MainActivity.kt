@@ -3,6 +3,7 @@ package com.example.ejemplonavigationview
 import android.app.ActionBar
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -33,15 +34,15 @@ class MainActivity : AppCompatActivity() {
 
             val layoutParams = mibinding.navigationView.layoutParams as DrawerLayout.LayoutParams
 
-            // Establecer el margen superior para que no cubra el Toolbar
-            layoutParams.topMargin = mibinding.myToolbar.layoutParams.height+systemBars.top
+            // Establecer el margen superior para que solo cubra el toolbar
+            layoutParams.topMargin = systemBars.top
             // Opcional: establecer márgenes inferiores también (por ejemplo, para navegación gestual)
 
 
             // Aplicar los LayoutParams al NavigationView
             mibinding.navigationView.layoutParams = layoutParams
 
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0)
             insets
         }
         //DrawerLayout
@@ -74,6 +75,11 @@ class MainActivity : AppCompatActivity() {
             //Si está cerrado, mostrará el ícono de menú (hamburguesa).
             toggle.syncState()
 
+            //Establezco la operación cuando pulso al X del navigationView
+
+            navigationView.getHeaderView(0).findViewById<ImageView>(R.id.imageCruz).setOnClickListener{
+                miDrawerlayout.closeDrawers()
+            }
 
 
             //Añade escuchador a las opciones de menu
@@ -86,8 +92,8 @@ class MainActivity : AppCompatActivity() {
                     R.id.BD->Toast.makeText(this@MainActivity,"BD",Toast.LENGTH_LONG).show()
                     else -> Toast.makeText(this@MainActivity,"RESTO",Toast.LENGTH_LONG).show()
                 }
-                //Si queremos que quede marcada la opción
-              //  it.setChecked(true)
+                //Si queremos que quede marcada la opción,
+              // it.setChecked(true)
                 mi_drawer.closeDrawers()
                 true
 
