@@ -23,15 +23,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mibinding=ActivityMainBinding.inflate(layoutInflater)
-    //  enableEdgeToEdge()
+   //   enableEdgeToEdge()
         setContentView(mibinding.root)
-      /*  ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.mi_drawerlayout)) { v, insets ->
+  /*      ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.mi_drawerlayout)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
 
             //Ahora actualizo el margen del NavigationView
             // Configurar LayoutParams personalizados
 
-            val layoutParams = mibinding.navigationView.layoutParams as DrawerLayout.LayoutParams
+        val layoutParams = mibinding.navigationView.layoutParams as DrawerLayout.LayoutParams
 
             // Establecer el margen superior para que no cubra el Toolbar
             layoutParams.topMargin = mibinding.myToolbar.layoutParams.height+systemBars.top
@@ -41,9 +41,9 @@ class MainActivity : AppCompatActivity() {
             // Aplicar los LayoutParams al NavigationView
             mibinding.navigationView.layoutParams = layoutParams
 
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            v.setPadding(systemBars.left, 20, systemBars.right, systemBars.bottom)
             insets
-        }*/
+        } */
         //DrawerLayout
         mi_drawer=findViewById(R.id.mi_drawerlayout)
 
