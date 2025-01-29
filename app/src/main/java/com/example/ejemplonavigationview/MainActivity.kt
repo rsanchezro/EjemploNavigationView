@@ -51,9 +51,9 @@ class MainActivity : AppCompatActivity() {
         //Establecemos el Toolbar
         setSupportActionBar(mibinding.contenido.myToolbar)
 
-        //Ponemos icono al menu si queremos cambiarlo
-       // supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_action_restaurant_menu)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        //Ponemos icono al menu si queremos cambiarlo, pero si no hacemos uso de toggle
+        // supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_action_restaurant_menu)
+        // supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
 
 
@@ -65,17 +65,17 @@ class MainActivity : AppCompatActivity() {
             //Cambiar ese ícono por una flecha de retroceso cuando el Drawer está abierto.
             //Manejar la animación de transición entre el ícono de menú y la flecha automáticamente.
 
-            toggle=ActionBarDrawerToggle(this@MainActivity,miDrawerlayout,R.string.abierto,R.string.cerrado)
+            //  toggle=ActionBarDrawerToggle(this@MainActivity,miDrawerlayout,R.string.abierto,R.string.cerrado)
 
          //   Esto vincula el toggle (el controlador de animación y eventos del Drawer) con el DrawerLayout.
            // De esta manera, el ActionBarDrawerToggle detecta cuando el Drawer se abre o se cierra y actualiza automáticamente el ícono en la barra de herramientas.
-            miDrawerlayout.addDrawerListener(toggle)
+        //    miDrawerlayout.addDrawerListener(toggle)
 
             // Este método sincroniza el estado inicial del DrawerLayout con la barra de herramientas al cargar la actividad.
             //Por ejemplo:
             //Si el Drawer ya está abierto cuando se carga la actividad, el ActionBarDrawerToggle asegurará que el ícono inicial sea la flecha de retroceso.
             //Si está cerrado, mostrará el ícono de menú (hamburguesa).
-            toggle.syncState()
+     //       toggle.syncState()
 
             navigationView.getHeaderView(0).findViewById<ImageView>(R.id.imageCruz).setOnClickListener{
                 miDrawerlayout.closeDrawers()
@@ -114,12 +114,12 @@ El método delega el evento al sistema (super.onOptionsItemSelected(item)),
 que se encargará de manejarlo (por ejemplo, ejecutando acciones específicas para otros ítems).
  */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-/*     Se puede implementar de otra forma
+/*     Se puede implementar de otra forma, sin hacer uso de toggle
   if(item.itemId==android.R.id.home){
             mibinding.miDrawerlayout.openDrawer(GravityCompat.START);
         }
     return true */
-       if(toggle.onOptionsItemSelected(item)){
+      if(toggle.onOptionsItemSelected(item)){
             //supportActionBar?.setDisplayHomeAsUpEnabled(true)
           return true
         }
